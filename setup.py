@@ -9,5 +9,6 @@ setuptools.setup(
     namespace_packages=["paka"],
     zip_safe=False,
     url="https://github.com/PavloKapyshin/paka.funcreg",
+    license="BSD",
     author="Pavlo Kapyshin",
     author_email="i@93z.org")
