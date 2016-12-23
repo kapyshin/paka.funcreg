@@ -8,7 +8,8 @@ class _Registry(collections.defaultdict):
     def __init__(
             self, orig_key_checker, reg_key_maker, permitted_keys_factory,
             get_key_maker=None, default=None):
-        super().__init__(None if default is None else lambda: default)
+        super(_Registry, self).__init__(
+            None if default is None else lambda: default)
         self._is_orig_key = orig_key_checker
         self._make_get_key = get_key_maker
         self._make_reg_key = reg_key_maker
@@ -17,7 +18,7 @@ class _Registry(collections.defaultdict):
     def __getitem__(self, key):
         if self._make_get_key:
             key = self._make_get_key(key)
-        return super().__getitem__(key)
+        return super(_Registry, self).__getitem__(key)
 
     def register(self, func_or_orig_key, orig_key=None):
         if (
