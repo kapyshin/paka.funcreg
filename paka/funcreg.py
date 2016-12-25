@@ -41,24 +41,24 @@ class _Registry(collections.defaultdict):
 _make_registry_factory = functools.partial(functools.partial, _Registry)
 
 
+def _check_obj_or_type_key(maybe_orig_key, orig_key):
+    return (
+        orig_key is None and
+        not isinstance(maybe_orig_key, types.FunctionType))
+
+
 NameRegistry = _make_registry_factory(
     orig_key_checker=lambda maybe_orig_key, _: not callable(maybe_orig_key),
     reg_key_maker=lambda func, name: name or func.__name__,
     permitted_keys_factory=set)
 
 ObjectRegistry = _make_registry_factory(
-    orig_key_checker=(
-        lambda maybe_orig_key, orig_key: (
-            orig_key is None and
-            not isinstance(maybe_orig_key, types.FunctionType))),
+    orig_key_checker=_check_obj_or_type_key,
     reg_key_maker=lambda func, obj: obj or func,
     permitted_keys_factory=set)
 
 TypeRegistry = _make_registry_factory(
-    orig_key_checker=(
-        lambda maybe_orig_key, orig_key: (
-            orig_key is None and
-            not isinstance(maybe_orig_key, types.FunctionType))),
+    orig_key_checker=_check_obj_or_type_key,
     reg_key_maker=lambda func, type_: type_ or type(func),
     get_key_maker=type,
     permitted_keys_factory=set)

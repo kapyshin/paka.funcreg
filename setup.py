@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name="paka.funcreg",
-    version="2.0.2",
+    version="2.0.3",
     packages=setuptools.find_packages(),
     include_package_data=True,
     namespace_packages=["paka"],
