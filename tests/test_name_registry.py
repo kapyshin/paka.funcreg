@@ -77,3 +77,33 @@ class NameRegistryTest(unittest.TestCase):
         self.assertIs(reg["func_one"], func_one)
         self.assertIs(reg["random thing here"], func_two)
         self.assertIs(reg[""], func_two)
+
+    def test_class_decorator_with_name(self):
+        name = "something classy"
+        reg = self.make_reg()
+        @reg.register(name)
+        class ThisThing:
+            pass
+        self.assertIs(reg[name], ThisThing)
+
+    def test_class_decorator_without_name(self):
+        reg = self.make_reg()
+        @reg.register
+        class ThisThing:
+            pass
+        self.assertIs(reg["ThisThing"], ThisThing)
+
+    def test_class_functional_with_name(self):
+        name = "other-thing-here"
+        reg = self.make_reg()
+        class ThisThing:
+            pass
+        reg.register(ThisThing, name)
+        self.assertIs(reg[name], ThisThing)
+
+    def test_class_functional_without_name(self):
+        reg = self.make_reg()
+        class ThisThing:
+            pass
+        reg.register(ThisThing)
+        self.assertIs(reg["ThisThing"], ThisThing)
