@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name="paka.funcreg",
-    version="2.1.1",
+    version="2.1.2",
     packages=setuptools.find_packages(),
     include_package_data=True,
     namespace_packages=["paka"],
@@ -17,7 +17,9 @@ setuptools.setup(
         "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.5"],
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy"],
     license="BSD",
     author="Pavlo Kapyshin",
     author_email="i@93z.org")
