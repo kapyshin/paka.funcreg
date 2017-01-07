@@ -1,0 +1,4 @@
+[run]
+source = paka/
+omit =
+    paka/__init__.py
