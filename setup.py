@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name="paka.funcreg",
-    version="2.1.2",
+    version="2.1.3",
     packages=setuptools.find_packages(),
     extras_require={"testing": []},
     include_package_data=True,
